@@ -5,10 +5,10 @@
 
 .toggler {
     position: absolute;
-    background-color: #2e073f;
+    background-color: #245320;
     cursor: pointer;
     left: 0;
     font-size: medium;
-    color: #e5d9f2;
+    color: #fffaef;
     margin-top: 0;
 }

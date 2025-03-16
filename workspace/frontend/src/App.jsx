@@ -21,6 +21,26 @@ const projectData = [
 function App() {
     return (
         <>
+            {/* Background with animated leaves */}
+            <div id="background-container">
+                <div id="leaves">
+                    {Array.from({ length: 20 }).map((_, index) => {
+                        const randomX = Math.random(); // Random horizontal position
+                        const fallDelay = Math.random() * 5; // Random delay (0-5s)
+                        const fallDuration = 3 + Math.random() * 3; // Random duration (3-6s)
+                        return (
+                            <i key={index} 
+                                style={{ 
+                                    "--random-x": randomX, 
+                                    "--fall-delay": `${fallDelay}s`,
+                                    "--fall-duration": `${fallDuration}s`
+                                }} 
+                            ></i>
+                        );
+                    })}
+                </div>
+            </div>
+
             <Navbar/>
             <Profile/>
             <div id="about">
@@ -38,7 +58,7 @@ function App() {
                     />
                 ))}
             </div>
-            <div id="experiences">
+            <div id="exp">
                 <h2>Experiences</h2>
                 <Experiences 
                     title="Job Title" 
