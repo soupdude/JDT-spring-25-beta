@@ -1,10 +1,18 @@
 #profile {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
     gap: 30px;
     margin-bottom: 50px;
     font-size: 1.2rem;
+    padding-left: 20px;
+    width: 300px; /* Set a fixed width */
+    height: 400px; /* Set a fixed height */
+    position: absolute; /* Position it absolutely */
+    top: 200px; /* Adjust the top position to be below the navbar */
+    border: 1px solid #000000; /* Optional: Add a border to see the box */
+    background-color: rgba(31, 61, 32, 0.8); /* Set background color with 0.8 opacity */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
 }
 
 #profile-text {
@@ -23,7 +31,7 @@
 }
 
 #profile h2 {
-    font-size: 43px;
+    font-size: 35px;
 }
 
 .icons {
@@ -31,4 +39,5 @@
     justify-content: center;
     gap: 15px;
     margin-top: 10px;
+    padding-top: 25px;
 }
