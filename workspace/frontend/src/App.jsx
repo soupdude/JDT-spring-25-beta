@@ -3,6 +3,7 @@ import Profile from "./components/profile/profile"
 import Projects from "./components/projects/projects";
 import Experiences from "./components/experiences/experiences";
 import About from "./components/about/about";
+import Chat from "./components/chat/chat" 
 import './app.css';
 
 const projectData = [
@@ -22,6 +23,7 @@ function App() {
     return (
         <>
             <Navbar/>
+            <Chat/>
             <Profile/>
             <div id="about">
                 <About/>
@@ -47,6 +49,9 @@ function App() {
                     bullets={["Responsibility 1", "Responsibility 2", "Responsibility 3"]}
                 />
             </div>
+            
+
+            
         </>
     )
 }
