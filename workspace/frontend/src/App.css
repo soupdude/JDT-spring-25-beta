@@ -54,8 +54,7 @@ body::before {
 
 .projects,
 .job,
-.about,
-#chat {
+.about {
   background: #163119;
   margin: 0 auto;
   margin-bottom: 30px;

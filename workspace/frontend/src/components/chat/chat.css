@@ -24,7 +24,7 @@
 .chatbot-response {
     width: 50%;
     margin-right: auto;
-    background-color: #e5d9f2;
+    background-color:#0e1f0c;
     padding: 10px;
     border-radius: 5px;
 }
@@ -32,7 +32,7 @@
 .user-message {
     width: 50%;
     margin-left: auto;
-    background-color: #8d77ab;
+    background-color: #0e1f0c;
     color: #f5efff;
     padding: 10px;
     border-radius: 5px;
@@ -45,7 +45,7 @@ form {
 }
 
 input::placeholder {
-    color: #8d77ab;
+    color: #77c57a;
 }
   
 input[type="text"] {

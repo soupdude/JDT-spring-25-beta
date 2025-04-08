@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './chat.css'
 
 function Chat() {
@@ -18,14 +18,49 @@ function Chat() {
             if (!response.ok) {
                 throw new Error('Oops, something went wrong!')
             }
+            
+            const{ message } = await response.json()
+            await fetch('http://localhost:4000/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            body: JSON.stringify({ input: userInput, response:message })
 
-            const { message } = await response.json()
+            })
+
             setMessages([...messages, userInput, message])
         } catch (error) {
             console.log(error)
             return "Oops, something went wrong!"
         }
     }
+
+    function deleteChatbox(index) {
+        let newMessages = [...messages]
+        newMessages.splice(index, 2)
+        fetch('http://localhost:4000/delete', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ input: messages[index], response: messages[index+1] })
+        })
+        setMessages(newMessages)
+    }
+
+    useEffect(()  => {
+        fetch('http://localhost:4000/logs')
+            .then(res => res.json())
+            .then(data => {
+                let newMessages = []
+                for (let i = 0; i < data.length; i++) {
+                    newMessages.push(data[i].input)
+                    newMessages.push(data[i].response)
+                }
+                setMessages(newMessages)
+            })
+    } , [])
 
     return (
         <div id='chat'>
@@ -35,6 +70,7 @@ function Chat() {
                             type="text"
                             name="userInput"
                             placeholder='What would you like to ask'
+                            value={userInput}
                             onChange={e => setUserInput(e.target.value)}
                         />
                     </form>
@@ -43,6 +79,9 @@ function Chat() {
 
                         messages.map((text, index) => (
                             <div key={index} className="chatbox">
+                                {index % 2 == 0 && <button 
+                                className="x" onClick={() => deleteChatbox(index)}>X
+                                </button>}
                                 <p className={index % 2 == 0 ? 'user-message' : 'chatbot-response'}>{text}</p>
                             </div>
                         ))
